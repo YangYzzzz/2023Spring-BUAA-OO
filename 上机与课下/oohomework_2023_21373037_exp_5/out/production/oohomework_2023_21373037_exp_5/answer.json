@@ -1,0 +1,13 @@
+{
+  "1": "size == (\\sum int i; 0 <= i && i < heap.getSize() && heap.getElementData()[i].isReferenced(); 1)",
+  "2": "elements[++newSize] = obj;",
+  "3": "Object[] elements = getElementData();\n        MyObject young = (MyObject) elements[1];\n        for (int i = 1; i <= getSize(); i++) {\n            MyObject myObject =  this.getElement(i);\n            if (young.compareTo(myObject) > 0) {\n                young = myObject;\n            }\n        }\n        return young;",
+  "4-1": "heap",
+  "4-2": "\\old(heap.getSize()) + count < DEFAULT_CAPACITY",
+  "4-3": "heap.getSize() < DEFAULT_CAPACITY",
+  "4-4": "(\\forall int i; 0 <= i && i < \\old(heap.getSize());(\\exists int j; 0 <= j && j < heap.getSize(); heap.getElementData()[j].equals(\\old(heap.getElementData()[i]))));",
+  "4-5": "\\old(heap.getSize()) + count >= DEFAULT_CAPACITY",
+  "4-6": "heap.getSize() < DEFAULT_CAPACITY",
+  "4-7": "(\\forall int i; 0 <= i && i < \\old(heap.getSize()) && heap.getElementData()[i].isReferenced(); (\\exists int j; 0 <= j && j < heap.size; heap.getElementData()[j].equals(\\old(heap.getElementData()[i]))))",
+  "4-8": "(\\forall int i; 0 <= i && i < \\old(heap.getSize()) && !heap.getElementData()[i].isReferenced(); (\\forall int j; 0 <= j && j < heap.size; !heap.getElementData()[j].equals(\\old(heap.getElementData()[i]))))"
+}

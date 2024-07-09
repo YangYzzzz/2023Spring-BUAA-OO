@@ -1,0 +1,19 @@
+{
+    "1": [
+        "-ask2checkOut(guestName:String, roomId:int): void",
+        "+checkOut(roomId: int): void",
+        "-workerName: String",
+        "Dispatcher",
+        "finishClean",
+        "isCleanOperation()"
+    ],
+    "2": [
+        "DIS_REC_CHECKIN_FAILED",
+        "replyCheckOut(request);",
+        "arrangeClean4CheckOut(request);",
+        "arrangeCleanOnly(Request request)",
+        "RoomState.OCCUPIED",
+        "RequestTag.DIS_CLE_CLEAN_CHECKOUT.equals(request.getRequestTag())"
+    ],
+    "3": "模块在JAVA里算是类的实现，模块一定要有足够的独立性，各模块之间的紧密程度应尽可能低，且尽可能与少的模块关联；而模块内也要尽可能清晰明了，职责单一，我常常以生活中的常识中判断这是不是一个功能不可分割的最小单元，以本次实验来说，清洁者，前台，管理员这三类人职责不同功能不同，必然要划分为不同的模块，而将所有请求划分类别，统一由控制器分发到不同的请求列表，且由控制器进行每一步顺序操作的交互，相当于一个“中转站”，充分体现了低耦合的思想，使整个架构充满逻辑，浑然一体，本次实验使我受益良多！"
+}

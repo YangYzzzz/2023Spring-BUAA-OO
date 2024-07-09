@@ -1,0 +1,126 @@
+@startuml
+class Machine {
+- ArrayList<Book> books
++ ArrayList<Book> getBooks()
++ void searchBook(char,String,Person)
++ void borrowBook(Person,Book)
++ void returnBook(Person,Book)
+}
+enum Operation {
++  BORROW
++  SMEAR
++  LOST
++  RETURN
+}
+class Shelf {
+- ArrayList<Book> books
++ void addBook(Book)
++ Book getBook(char,String)
+}
+class LogisticsDivision {
+- ArrayList<Book> books
++ ArrayList<Book> getBooks()
++ void repairBook(Book)
+}
+class BorrowReturningLibrarian {
+- ArrayList<Book> books
++ ArrayList<Book> getBooks()
++ void borrowBook(Person,Book)
++ void returnBook(Person,Book)
++ void compensate(Person)
+}
+class Command {
+- String time
+- String personId
+- char bookCategory
+- String bookName
+- Operation operation
++ String getTime()
++ String getPersonId()
++ char getBookCategory()
++ String getBookName()
++ Operation getOperation()
+}
+class OrderingLibrarian {
+- ArrayList<Pair> orderList
++ ArrayList<Pair> getOrderList()
++ boolean hasSameBook(Person,Book)
++ void clearBBook(Person)
++ void orderBook(Person,Book)
++ void sendBook(Person,Book)
+}
+class Person {
+- String id
+- ArrayList<Book> books
+- int orderedTime
++ boolean equals(Object)
++ String getId()
++ void addBook(Book)
++ boolean hasBBook()
++ boolean hasCSameBook(Book)
++ void addOrderedBookTime()
++ boolean canOrderBook(Book)
++ Book getBook(char,String)
++ void clearOrderedBookTime()
++ void borrowBook(char,String)
++ void smearBook(char,String)
++ void lostBook(char,String)
++ void returnBook(char,String)
+}
+class Pair {
+- Person person
+- Book book
+- boolean vis
++ boolean isVis()
++ void setVis(boolean)
++ Person getPerson()
++ Book getBook()
+}
+class MainClass {
+- {static} Pattern bookCommand
+- {static} Pattern personCommand
+- {static} Scanner scanner
++ {static} void main(String[])
+}
+class ArrangingLibrarian {
+- ArrayList<Book> books
++ void collectBook()
++ void sendBook()
++ void arrangeBook()
+}
+class Book {
+- char category
+- String name
+- boolean smeared
++ boolean isSmeared()
++ void setSmeared(boolean)
++ char getCategory()
++ String getName()
++ boolean equals(Object)
+}
+class Library {
+- {static} ArrangingLibrarian arrangingLibrarian
+- {static} BorrowReturningLibrarian borrowReturningLibrarian
+- {static} LogisticsDivision logisticsDivision
+- {static} OrderingLibrarian orderingLibrarian
+- {static} Machine machine
+- {static} ArrayList<Person> people
+- {static} Shelf shelf
+- {static} ArrayList<Book> booksShadow
+- {static} int year
+- {static} int month
+- {static} int day
++ {static} void updateTime()
++ {static} String getTime()
++ {static} BorrowReturningLibrarian getBorrowReturningLibrarian()
++ {static} LogisticsDivision getLogisticsDivision()
++ {static} OrderingLibrarian getOrderingLibrarian()
++ {static} Machine getMachine()
++ {static} Shelf getShelf()
++ {static} ArrayList<Book> getBooksShadow()
++ {static} void addBooksShadow(Book)
++ {static} Person getPerson(String)
++ {static} void cleanAllOrderedBookTime()
++ {static} void run(ArrayList<Command>)
+}
+@enduml

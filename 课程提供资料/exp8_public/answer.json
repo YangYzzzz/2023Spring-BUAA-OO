@@ -1,0 +1,25 @@
+{
+    "1": [
+        "Bottle",
+        "beUsed",
+        "继承",
+        "Equipment"
+    ],
+    "2": "构造",
+    "3": ["Adventurer", "getKnapsack", "canAdd=a.getKnapsack().isFull()"],
+    "4": ["Adventurer", "Knapsack", "isFull"],
+    "5": ["CommodityManager", "Knapsack", "关联"],
+    "6": "addEquipment",
+    "7": [
+        "10",
+        "canAdd==0&&trying>9",
+        "canAdd==0&&trying<=10",
+        "trying to add",
+        "trying to add"
+    ],
+    "8": [
+        "继承",
+        "equipmentList",
+        "Vector<Commodity>"
+    ]
+}

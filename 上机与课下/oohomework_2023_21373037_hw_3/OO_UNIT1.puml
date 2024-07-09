@@ -1,0 +1,110 @@
+@startuml
+'https://plantuml.com/class-diagram
+title <size:50> The structure of OO_Unit1
+
+interface Factor {
+Poly toPoly()
+}
+class CustomFun #palegreen;line:green;line.bold{
+String name
+Factor factor1
+Factor factor2
+Factor factor3
+Poly toPoly()
+}
+class CustomFunSet #palegreen;line:green;line.bold{
+String name;
+String var1;
+String var2;
+String var3;
+String fun;
+}
+class Derivation #pink;line:red;line.bold{
+Expr expr
+Poly toPoly()
+}
+class DerivationMethod #pink;line:red;line.bold{
+String var
+Poly derivation(Poly poly)
+Poly derivationPoly(Unit unit)
+derivationTri(Unit unit, HashMap.Entry<Poly, Integer> entry)
+}
+class Expr {
+ArrayList<Term> terms
+int index
+Poly toPoly()
+}
+class Term {
+ArrayList<Factor> factors
+int pos
+Poly toPoly()
+}
+class Lexer {
+String input
+int pos
+String curToken
+String getNumber()
+String next()
+}
+class Parser {
+Lexer lexer
+Expr parseExpr()
+Term parseTerm(int pos)
+Factor parseFactor()
+Derivation parseDerivation()
+CustomFun parseCustomFun()
+Unit parseUnit()
+TriFun parseTriFun()
+Expr parseExprFactor()
+}
+class TriFun #palegreen;line:green;line.bold{
+int index
+boolean isSin
+Factor factor
+Poly toPoly()
+}
+class Unit {
+BigInteger constant;
+int indexX
+int indexY
+int indexZ
+int pos
+HashMap<Poly, Integer> triFunHashMap
+boolean notExpr()
+Poly toPoly()
+Unit clone()
+}
+class Poly {
+ArrayList<Unit> units
+boolean equals(Poly poly)
+void inverse()
+boolean inverseEqual(Poly poly)
+int isHashMapSame(HashMap<Poly, Integer> map1, HashMap<Poly, Integer> map2)
+void squareMergeModify(Unit unit1, Unit unit2)
+Poly addPoly(Poly other)
+Poly mulPoly(Poly other)
+Poly powPoly(int index)
+String toString()
+}
+class MainClass {
+{static} String preExpr(String input)
+{static} String parseExpr(String input)
+{static} CustomFunSet preCustomFunSet(String function1)
+{static} void main()
+}
+MainClass -- Poly
+Factor <|.. Expr
+Factor <|.. CustomFun #palegreen;line:green;line.dashed
+CustomFun -- CustomFunSet #palegreen;line:green;line.bold
+Factor <|.. TriFun #palegreen;line:green;line.dashed
+Factor <|.. Derivation #pink;line:red;line.dashed
+Factor <|.. Unit
+DerivationMethod <|-- Derivation #pink;line:red;line.bold
+Parser o-- Lexer
+Expr o-- Term
+Term o-- Factor
+Poly o-- Unit
+Factor -> Poly : toPoly()
+Term -> Poly : toPoly()
+Expr -> Poly : toPoly()
+@enduml
